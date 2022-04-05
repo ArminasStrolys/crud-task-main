@@ -1,21 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const CreateForm = () => {
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+  const [identity, setIdentity] = useState("");
+  const [power, setPower] = useState("");
+  const [newHero, setNewHero] = useState({
+    name: "",
+    age: "",
+    secrectIdentity: "",
+    power: "",
+  });
+  // const [heroes, setHeroes] = useState([
+  //   {
+  //     name: "",
+  //     age: "",
+  //     secrectIdentity: "",
+  //     power: "",
+  //   },
+  // ]);
 
-const [name, setName] = useState('')
-const [age, setAge] = useState('')
-const [identity, setIdentity] = useState('')
-const [power, setPower] = useState('')
+  console.log(name);
+  console.log(age);
+  console.log(identity);
+  console.log(power);
 
-console.log(name)
-console.log(age)
-console.log(identity)
-console.log(power)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // setHeroes((val) => [
+    //   { ...val, name: name, age: age, secrectIdentity: identity, power: power },
+    // ]);
+    setNewHero((val) => [
+      { ...val, name: name, age: age, secrectIdentity: identity, power: power },
+    ]);
+  };
 
-const handleSubmit = (e) => {
-    e.preventDefault()
-
-}
+  console.log(newHero);
 
   return (
     <div className="modal-body m-auto col-6">
@@ -29,7 +49,9 @@ const handleSubmit = (e) => {
             type="text"
             id="name"
             placeholder="Name"
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) =>
+              setNewHero((val) => ({ ...val, name: e.target.value }))
+            }
           />
         </div>
         <div className="form-group">
@@ -41,7 +63,10 @@ const handleSubmit = (e) => {
             type="number"
             id="age"
             placeholder="Age"
-            onChange={(e) => setAge(e.target.value)}
+            // onChange={(e) => setAge(e.target.value)}
+            onChange={(e) =>
+              setNewHero((val) => ({ ...val, age: e.target.value }))
+            }
           />
         </div>
         <div className="form-group">
@@ -53,7 +78,8 @@ const handleSubmit = (e) => {
             type="text"
             id="secretID"
             placeholder="Secret Identity"
-            onChange={(e) => setIdentity(e.target.value)}
+            // value={identity}
+            // onChange={(e) => setIdentity(e.target.value)}
           />
         </div>
         <div className="form-group">
@@ -65,7 +91,7 @@ const handleSubmit = (e) => {
             type="text"
             id="power"
             placeholder="Power"
-            onChange={(e) => setPower(e.target.value)}
+            // onChange={(e) => setPower(e.target.value)}
           />
         </div>
         <button className="btn btn-dark" type="submit">

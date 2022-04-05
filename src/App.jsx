@@ -9,6 +9,9 @@ function App() {
 
 const [heroData, setHeroData] = useState(data)
 
+// setHeroData(heroData.members[0].name = 'Mat')
+console.log(heroData.members[0].name)
+
   return (
     <div className="jumbotron text-center">
       <Table squad={heroData.squadName} town={heroData.homeTown} base={heroData.secretBase}>
