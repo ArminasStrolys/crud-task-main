@@ -7,10 +7,10 @@ const Row = (props) => {
       <td>{props.power}</td>
 
       <td>
-        <button className="btn btn-light">Edit</button>
+        <button onClick={props.edit} className="btn btn-light">Edit</button>
       </td>
       <td>
-        <button className="btn btn-light">Delete</button>
+        <button onClick={()=>props.delete(props.idx)} className="btn btn-light">Delete</button>
       </td>
     </tr>
   );

@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 
-const CreateForm = () => {
-
+const CreateForm = (props) => {
   const [newHero, setNewHero] = useState({
     name: "",
     age: "",
-    secrectIdentity: "",
+    secretIdentity: "",
     power: "",
   });
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(newHero.name);
+    props.onSubmit(newHero);
   };
 
+  const handleInputChange = (e, inputName) => {
+    const copyNewHero = { ...newHero };
+    copyNewHero[inputName] = e.target.value;
+    setNewHero(copyNewHero);
+  };
 
   return (
     <div className="modal-body m-auto col-6">
@@ -28,7 +31,7 @@ const CreateForm = () => {
             type="text"
             id="name"
             placeholder="Name"
-            onChange={(e) => setNewHero({name: e.target.value})}
+            onChange={(e) => handleInputChange(e, "name")}
           />
           {console.log(newHero.name)}
         </div>
@@ -41,7 +44,7 @@ const CreateForm = () => {
             type="number"
             id="age"
             placeholder="Age"
-            onChange={(e) => setNewHero({age: e.target.value})}
+            onChange={(e) => handleInputChange(e, "age")}
           />
         </div>
         <div className="form-group">
@@ -53,7 +56,7 @@ const CreateForm = () => {
             type="text"
             id="secretID"
             placeholder="Secret Identity"
-            onChange={(e) => setNewHero({secrectIdentity: e.target.value})}
+            onChange={(e) => handleInputChange(e, "secretIdentity")}
           />
         </div>
         <div className="form-group">
@@ -65,7 +68,7 @@ const CreateForm = () => {
             type="text"
             id="power"
             placeholder="Power"
-            onChange={(e) => setNewHero({power: e.target.value})}
+            onChange={(e) => handleInputChange(e, "power")}
           />
         </div>
         <button className="btn btn-dark" type="submit">

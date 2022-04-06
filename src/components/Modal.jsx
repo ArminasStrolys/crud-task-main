@@ -1,6 +1,10 @@
-const Modal = () => {
+const Modal = (props) => {
   return (
     <div
+      style={{
+        display: props.visible === true ? "block" : "none",
+        opacity: props.visible === true ? "1" : "0",
+      }}
       className="modal fade"
       id="exampleModal"
       tabIndex="-1"
@@ -19,6 +23,7 @@ const Modal = () => {
               className="close"
               data-dismiss="modal"
               aria-label="Close"
+              onClick={props.invisible}
             >
               <span aria-hidden="true">&times;</span>
             </button>
@@ -76,6 +81,7 @@ const Modal = () => {
                   type="button"
                   className="btn btn-secondary"
                   data-dismiss="modal"
+                  onClick={props.invisible}
                 >
                   Close
                 </button>
