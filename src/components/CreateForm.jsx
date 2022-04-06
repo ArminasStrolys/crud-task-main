@@ -1,41 +1,20 @@
 import React, { useState } from "react";
 
 const CreateForm = () => {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-  const [identity, setIdentity] = useState("");
-  const [power, setPower] = useState("");
+
   const [newHero, setNewHero] = useState({
     name: "",
     age: "",
     secrectIdentity: "",
     power: "",
   });
-  // const [heroes, setHeroes] = useState([
-  //   {
-  //     name: "",
-  //     age: "",
-  //     secrectIdentity: "",
-  //     power: "",
-  //   },
-  // ]);
 
-  console.log(name);
-  console.log(age);
-  console.log(identity);
-  console.log(power);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // setHeroes((val) => [
-    //   { ...val, name: name, age: age, secrectIdentity: identity, power: power },
-    // ]);
-    setNewHero((val) => [
-      { ...val, name: name, age: age, secrectIdentity: identity, power: power },
-    ]);
+    console.log(newHero.name);
   };
 
-  console.log(newHero);
 
   return (
     <div className="modal-body m-auto col-6">
@@ -49,10 +28,9 @@ const CreateForm = () => {
             type="text"
             id="name"
             placeholder="Name"
-            onChange={(e) =>
-              setNewHero((val) => ({ ...val, name: e.target.value }))
-            }
+            onChange={(e) => setNewHero({name: e.target.value})}
           />
+          {console.log(newHero.name)}
         </div>
         <div className="form-group">
           <label htmlFor="age" className="col-form-label">
@@ -63,10 +41,7 @@ const CreateForm = () => {
             type="number"
             id="age"
             placeholder="Age"
-            // onChange={(e) => setAge(e.target.value)}
-            onChange={(e) =>
-              setNewHero((val) => ({ ...val, age: e.target.value }))
-            }
+            onChange={(e) => setNewHero({age: e.target.value})}
           />
         </div>
         <div className="form-group">
@@ -78,8 +53,7 @@ const CreateForm = () => {
             type="text"
             id="secretID"
             placeholder="Secret Identity"
-            // value={identity}
-            // onChange={(e) => setIdentity(e.target.value)}
+            onChange={(e) => setNewHero({secrectIdentity: e.target.value})}
           />
         </div>
         <div className="form-group">
@@ -91,7 +65,7 @@ const CreateForm = () => {
             type="text"
             id="power"
             placeholder="Power"
-            // onChange={(e) => setPower(e.target.value)}
+            onChange={(e) => setNewHero({power: e.target.value})}
           />
         </div>
         <button className="btn btn-dark" type="submit">
