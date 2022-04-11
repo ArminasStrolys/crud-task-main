@@ -13,10 +13,20 @@ const CreateForm = (props) => {
     props.onSubmit(newHero);
   };
 
+  const clearInputs = () => {
+    setNewHero({
+      name: "",
+      age: "",
+      secretIdentity: "",
+      power: "",
+    })
+  }
+
   const handleInputChange = (e, inputName) => {
     const copyNewHero = { ...newHero };
     copyNewHero[inputName] = e.target.value;
     setNewHero(copyNewHero);
+    clearInputs()
   };
 
   return (

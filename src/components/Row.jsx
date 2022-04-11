@@ -1,4 +1,9 @@
 const Row = (props) => {
+
+  const handleEdit = () => {
+    props.edit(props.name, props.age, props.secret, props.power, props.id)
+  }
+
   return (
     <tr>
       <td>{props.name}</td>
@@ -7,7 +12,7 @@ const Row = (props) => {
       <td>{props.power}</td>
 
       <td>
-        <button onClick={props.edit} className="btn btn-light">Edit</button>
+        <button onClick={handleEdit} className="btn btn-light">Edit</button>
       </td>
       <td>
         <button onClick={()=>props.delete(props.idx)} className="btn btn-light">Delete</button>

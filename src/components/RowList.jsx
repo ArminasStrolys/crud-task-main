@@ -12,7 +12,7 @@ const RowList = (props) => {
           secret={member.secretIdentity}
           power={member.power}
           delete={props.delete}
-          edit={props.edit}
+          edit={props.modal}
           idx={i}
         />
       ))}

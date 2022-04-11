@@ -1,4 +1,30 @@
+import React, { useState, useEffect } from "react";
+
 const Modal = (props) => {
+  const [inputs, setInputs] = useState({
+    name: "",
+    age: "",
+    secretIdentity: "",
+    power: "",
+    id: "",
+  });
+
+  useEffect(() => {
+    setInputs({
+      name: props.modal.name,
+      age: props.modal.age,
+      secretIdentity: props.modal.secretIdentity,
+      power: props.modal.power,
+      id: props.modal.id,
+    });
+  }, [props.modal]);
+
+  const handleInputChange = (e, input) => {
+    const copyInputs = { ...inputs };
+    copyInputs[input] = e.target.value;
+    setInputs(copyInputs);
+  };
+
   return (
     <div
       style={{
@@ -38,6 +64,8 @@ const Modal = (props) => {
                   className="form-control"
                   type="text"
                   id="name"
+                  value={inputs.name}
+                  onChange={(e)=>handleInputChange(e, 'name')}
                   placeholder="Enter name"
                 />
               </div>
@@ -49,6 +77,8 @@ const Modal = (props) => {
                   className="form-control"
                   type="text"
                   id="age"
+                  value={inputs.age}
+                  onChange={(e)=>handleInputChange(e, 'age')}
                   placeholder="Enter age"
                 />
               </div>
@@ -60,6 +90,8 @@ const Modal = (props) => {
                   className="form-control"
                   type="text"
                   id="secretIdentity"
+                  value={inputs.secretIdentity}
+                  onChange={(e)=>handleInputChange(e, 'secretIdentity')}
                   placeholder="Enter secret identity"
                 />
               </div>
@@ -72,6 +104,8 @@ const Modal = (props) => {
                   className="form-control"
                   type="text"
                   id="power"
+                  value={inputs.power}
+                  onChange={(e)=>handleInputChange(e, 'power')}
                   placeholder="Enter power"
                 />
               </div>
