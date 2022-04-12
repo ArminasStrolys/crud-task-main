@@ -8,22 +8,33 @@ const Modal = (props) => {
     power: "",
     id: "",
   });
-
+// console.log(props.modalInputs)
   useEffect(() => {
     setInputs({
-      name: props.modal.name,
-      age: props.modal.age,
-      secretIdentity: props.modal.secretIdentity,
-      power: props.modal.power,
-      id: props.modal.id,
+      name: props.modalInputs.name,
+      age: props.modalInputs.age,
+      secretIdentity: props.modalInputs.secretIdentity,
+      power: props.modalInputs.power,
+      id: props.modalInputs.id,
     });
-  }, [props.modal]);
+  }, [props.modalInputs]);
 
   const handleInputChange = (e, input) => {
     const copyInputs = { ...inputs };
     copyInputs[input] = e.target.value;
     setInputs(copyInputs);
   };
+
+const handleSave = () => {
+  props.save({
+    name: inputs.name,
+    age: inputs.age,
+    secretIdentity: inputs.secretIdentity,
+    power: inputs.power,
+  },
+  inputs.id
+  )
+}
 
   return (
     <div
@@ -119,7 +130,7 @@ const Modal = (props) => {
                 >
                   Close
                 </button>
-                <button type="button" className="btn btn-primary">
+                <button type="button" className="btn btn-primary" onClick={handleSave}>
                   Save changes
                 </button>
               </div>

@@ -28,6 +28,13 @@ function App() {
     setHeroData(copyHeroData);
   };
 
+const handleSave = (data, index) => {
+  setVisible(false);
+  const copyHeroData = { ...heroData };
+  copyHeroData.members[index] = data
+  setHeroData(copyHeroData)
+}
+
   // const handleVisibility = (false) => {
   //     false ? 'style={{display: "block", opacity: "1"}}' : true
   // }
@@ -40,7 +47,11 @@ function App() {
       secretIdentity: secretIdentity,
       power: power,
       id: id,
+      
     });
+    console.log(name)
+    console.log(age)
+    console.log(id)
   };
 
   const hideModal = () => {
@@ -55,14 +66,13 @@ function App() {
         base={heroData.secretBase}
       >
         <RowList
-          edit={handleEdit}
           delete={handleDelete}
           members={heroData.members}
           modal={handleEdit}
         />
       </Table>
       <CreateForm onSubmit={handleCreate} />
-      <Modal visible={visible} invisible={hideModal} modal={handleEdit} />
+      <Modal visible={visible} invisible={hideModal} modalInputs={modalInputs} save={handleSave} />
     </div>
   );
 }

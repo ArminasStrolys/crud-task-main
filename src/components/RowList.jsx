@@ -13,7 +13,7 @@ const RowList = (props) => {
           power={member.power}
           delete={props.delete}
           edit={props.modal}
-          idx={i}
+          id={i}
         />
       ))}
     </>

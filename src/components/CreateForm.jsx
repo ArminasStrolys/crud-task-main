@@ -43,7 +43,7 @@ const CreateForm = (props) => {
             placeholder="Name"
             onChange={(e) => handleInputChange(e, "name")}
           />
-          {console.log(newHero.name)}
+          {/* {console.log(newHero.name)} */}
         </div>
         <div className="form-group">
           <label htmlFor="age" className="col-form-label">
